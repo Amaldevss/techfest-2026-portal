@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: techfest-2026-api
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false        # paste your Atlas connection string in the Render dashboard
+      - key: CLIENT_ORIGIN
+        sync: false        # your Vercel URL, e.g. https://techfest-2026.vercel.app
